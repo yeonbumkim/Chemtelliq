@@ -563,6 +563,9 @@ hr { border: 0; border-top: 1px solid var(--c-line); margin: var(--sp-12) 0; }
 
 @media (min-width: 880px) {
   .explainer__row { grid-template-columns: 1.35fr 1fr; gap: var(--sp-12); }
+  /* Flipping the sides has to flip the track widths too, or the figure lands in
+     the narrow column and renders noticeably smaller than its neighbours. */
+  .explainer__row--flip { grid-template-columns: 1fr 1.35fr; }
   .explainer__row--flip .explainer__media { order: 2; }
 }
 
