@@ -104,11 +104,12 @@
               <span class="field__hint">Please do not include confidential information before a CDA is in place.</span>
             </div>
 
-            <!-- Honeypot: hidden from people, filled in by bots. If it arrives
-                 non-empty the submission is dropped before it ever leaves the page. -->
+            <!-- Honeypot. Deliberately meaningless name and no label text: a field
+                 called "website" was being auto-filled by mobile Chrome, which made
+                 real enquiries look like bots. Bots still fill it; autofill does not. -->
             <div class="hp" aria-hidden="true">
-              <label for="website">Website</label>
-              <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+              <input type="text" id="hp_ref" name="hp_ref" tabindex="-1"
+                     autocomplete="off" inputmode="none">
             </div>
 
             <p class="form-status" data-form-status role="status" aria-live="polite"></p>
@@ -204,6 +205,6 @@
   </div>
 </footer>
 
-<script src="assets/js/main.js" defer></script>
+<script src="assets/js/main.js?v=2" defer></script>
 </body>
 </html>

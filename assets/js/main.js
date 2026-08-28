@@ -128,13 +128,6 @@
         return;
       }
 
-      // Honeypot: a person never sees this field, so anything in it is a bot.
-      // Fail silently - telling a bot it was caught only helps it adapt.
-      if (form.elements.website && form.elements.website.value) {
-        form.reset();
-        say("ok", "Thanks - your message has been sent.");
-        return;
-      }
 
       if (!WEBHOOK_URL) {
         say("error",
@@ -142,8 +135,15 @@
         return;
       }
 
+      // Honeypot. Rather than dropping the message here, flag it and let the Make
+      // scenario filter it out. A silent client-side drop meant that anything which
+      // tripped the trap by accident - mobile autofill did exactly this - vanished
+      // without the sender or us ever knowing.
       var data = new FormData(form);
-      data.delete("website");
+      var trap = form.elements.hp_ref ? form.elements.hp_ref.value : "";
+      data.delete("hp_ref");
+      if (trap) data.append("hp", trap);
+
       data.append("page", window.location.href);
       data.append("submitted_at", new Date().toISOString());
 
