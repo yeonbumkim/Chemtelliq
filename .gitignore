@@ -1,0 +1,61 @@
+# ============================================================
+#  Chemtelliq — 정적 사이트
+#  배포에 필요한 것: *.html, assets/, robots.txt, sitemap.xml
+# ============================================================
+
+# ---- macOS / 에디터가 만드는 부산물 ----
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# ---- 내부 문서 (공개 저장소에 올리지 않음) ----
+# 회사 정보, 작업 지시, 사이트에서 제거한 섹션의 원본 마크업이 들어 있음.
+# 주의: 이 파일들은 git 이 보관해 주지 않으므로 폴더 밖에 별도 사본을 두는 것을 권장.
+README.md
+CLAUDE.md
+홈페이지-내용-요청서.txt
+log.txt
+
+# ---- 원본 소스 미디어 ----
+# movie/ 는 변환 전 마스터(34MB). 사이트가 쓰는 것은 assets/video/*.mp4 로,
+# 이쪽은 반드시 추적되어야 함. 원본을 버전관리에 넣고 싶으면 아래 줄을 지울 것
+# (다만 git 은 대용량 바이너리에 취약하므로 Git LFS 를 쓰거나 별도 보관 권장).
+movie/
+*.mov
+*.mp4.orig
+
+# ---- 비밀정보 ----
+# 문의 폼을 자체 API 로 연결할 경우 대비
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+secrets.json
+
+# ---- 빌드/배포 도구를 나중에 도입할 경우 ----
+node_modules/
+dist/
+*.zip
+build/
+.cache/
+.parcel-cache/
+.vercel
+.netlify
+npm-debug.log*
+yarn-error.log*
+*.log
+
+# ---- 작업 중 임시 파일 ----
+*.tmp
+*.bak
+.tmp/
+scratch/
